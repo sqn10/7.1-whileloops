@@ -29,7 +29,7 @@
             Console.WriteLine("PIN ACCEPTED. YOU NOW HAVE ACCESS TO YOUR ACCOUNT.");
 
             // it answers something conditional, boolean true and false.
-            // 
+            // it's a loop and an if statement isn't. it will keep running until something is what you want it to be.
         }
     }
 }
