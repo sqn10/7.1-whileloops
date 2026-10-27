@@ -1,4 +1,6 @@
-﻿namespace _7._1_whileloops
+﻿using System;
+
+namespace _7._1_whileloops
 {
     internal class Program
     {
@@ -6,6 +8,7 @@
         {
             OtherExample();
             Task2();
+            AnotherMethod();
         }
         public static void Example()
         {
@@ -14,20 +17,26 @@
         }
         public static void OtherExample()
         {
-            int pin = 12345;
-            int entry;
+            bool done = false; // We can set this to ‘true’ to end the loop
+            int entry = 12345, tries = 0, pin = 0;
             Console.WriteLine("WELCOME TO THE BANK OF ALDWORTH.");
-            Console.Write("ENTER YOUR PIN: ");
-            Int32.TryParse(Console.ReadLine(), out entry);
-            Console.WriteLine();
-            while (entry != pin)
+            while (!done)
             {
-                Console.WriteLine("INCORRECT PIN. TRY AGAIN.");
-                Console.Write("ENTER YOUR PIN: ");
-                Int32.TryParse(Console.ReadLine(), out entry);
-                Console.WriteLine();
+                Console.WriteLine("ENTER YOUR PIN: ");
+                while (!Int32.TryParse(Console.ReadLine(), out pin))
+                    Console.WriteLine("Please enter a valid number");
+                tries++;
+                if (pin == entry)
+                {
+                    Console.WriteLine("Pin Accepted.");
+                    done = true; // This ends the loop
+                }
+                else if (tries == 5)
+                {
+                    Console.WriteLine("Too many incorrect tries. Access denied");
+                    done = true; // This ends the loop
+                }
             }
-            Console.WriteLine("PIN ACCEPTED. YOU NOW HAVE ACCESS TO YOUR ACCOUNT. FUNDS ARE: -$1,000,000.00.");
 
             // it answers something conditional, boolean true and false.
             // it's a loop and an if statement isn't. it will keep running until something is what you want it to be.
@@ -59,7 +68,7 @@
                 else
                 {
                     Console.WriteLine("Currently " + diceResult + " and " + diceResult2 + ".");
-                    Thread.Sleep(2000);
+                    Thread.Sleep(800);
                 }     
             }
 
@@ -68,6 +77,18 @@
             Console.WriteLine("Your dice are " + diceResult + " and " + diceResult2 + ".");
 
             Console.WriteLine("The sum is: " + diceSum + ".");
+        }
+        public static void AnotherMethod()
+        {
+            int count = 0; // This will count the number of times we have looped
+            Console.WriteLine("Type in a message, and I'll display it 5 times.");
+            Console.Write("Message: ");
+            string message = Console.ReadLine();
+            while (count < 5)
+            {
+                Console.WriteLine((count + 1) + ". " + message);
+                count++; // Adds 1 to our counter
+            }
         }
     }
 }
