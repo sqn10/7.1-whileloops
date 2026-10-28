@@ -9,6 +9,8 @@ namespace _7._1_whileloops
             OtherExample();
             Task2();
             AnotherMethod();
+            MessageRepeat();
+            AddNumInLoop();
         }
         public static void Example()
         {
@@ -89,6 +91,38 @@ namespace _7._1_whileloops
                 Console.WriteLine((count + 1) + ". " + message);
                 count++; // Adds 1 to our counter
             }
+        }
+        public static void MessageRepeat()
+        {
+            Console.WriteLine("Type a message, and an amount of times for it to be repeated.");
+            Console.WriteLine("Message: ");
+            string message = Console.ReadLine();
+            Console.WriteLine("And how many times?: ");
+            Int32.TryParse(Console.ReadLine(), out int userCount);
+            int count = 0;
+            while(count < userCount)
+            {
+                Console.WriteLine(message);
+                count++;
+            }
+        }
+        public static void AddNumInLoop()
+        {
+            int total = 0;
+            int count = 0;
+            int numbers = 5; // User will enter this many numbers.
+            int input;
+
+            Console.WriteLine("You will be prompted to enter 5 numbers and I will add them for you.");
+            while (count < numbers)
+            {
+                Console.WriteLine("Please enter a number:");
+                Int32.TryParse(Console.ReadLine(), out input);
+                total += input; // Adds the entered number to the running total
+                count++; // Increases our counter so we know how many values have been read in
+            }
+            Console.WriteLine();
+            Console.WriteLine("The total is: " + total);
         }
     }
 }
